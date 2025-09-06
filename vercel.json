@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.6.0"
+      "runtime": "vercel-php@0.7.4"
     }
   },
   "routes": [
@@ -12,10 +12,20 @@
     }
   ],
   "env": {
+    "APP_NAME": "Cafetería App",
     "APP_ENV": "production",
+    "APP_KEY": "base64:xI6RUJ7eqcM4Yr+/0drwrCscaRA/8w7mPLmcbBUaXcA=",
     "APP_DEBUG": "false",
+    "APP_URL": "https://your-app.vercel.app",
     "LOG_CHANNEL": "stderr",
-    "SESSION_DRIVER": "cookie"
+    "LOG_LEVEL": "error",
+    "SESSION_DRIVER": "cookie",
+    "SESSION_LIFETIME": "120",
+    "DB_CONNECTION": "sqlite",
+    "DB_DATABASE": "/tmp/database.sqlite",
+    "CACHE_STORE": "array",
+    "QUEUE_CONNECTION": "sync",
+    "FILESYSTEM_DISK": "local"
   },
   "build": {
     "env": {

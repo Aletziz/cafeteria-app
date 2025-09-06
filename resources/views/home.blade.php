@@ -31,10 +31,10 @@
 @if($carouselSlides->count() > 0)
 <section class="py-0 bg-light">
     <div class="container-fluid px-0">
-        <div id="productCarousel" class="continuous-carousel overflow-hidden" style="height: 400px; position: relative;">
+        <div id="productCarousel" class="continuous-carousel overflow-hidden" style="height: 280px; position: relative;">
             <div class="carousel-track" style="display: flex; width: {{ ($carouselSlides->count() * 2) * 100 }}%; animation: scroll {{ $carouselSlides->count() * 10 }}s linear infinite;">
                 @foreach($carouselSlides as $slide)
-                <div class="carousel-slide" style="min-width: {{ 100 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 400px; display: flex; align-items: center; padding: 0 2rem;">
+                <div class="carousel-slide" style="min-width: {{ 100 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
                     <div class="row align-items-center w-100">
                         <div class="col-md-6 text-white">
                             <h3 class="display-6 fw-bold mb-3">{{ $slide->title }}</h3>
@@ -56,7 +56,7 @@
                         <div class="col-md-6 text-center">
                             @if($slide->image_url)
                                 <img src="{{ $slide->image_url }}" 
-                                     alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg" style="max-width: 200px; border: 6px solid white;">
+                                     alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             @endif
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                 
                 <!-- Duplicar slides para efecto continuo -->
                 @foreach($carouselSlides as $slide)
-                <div class="carousel-slide" style="min-width: {{ 100 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 400px; display: flex; align-items: center; padding: 0 2rem;">
+                <div class="carousel-slide" style="min-width: {{ 100 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
                     <div class="row align-items-center w-100">
                         <div class="col-md-6 text-white">
                             <h3 class="display-6 fw-bold mb-3">{{ $slide->title }}</h3>
@@ -87,7 +87,7 @@
                         <div class="col-md-6 text-center">
                             @if($slide->image_url)
                                 <img src="{{ $slide->image_url }}" 
-                                     alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg" style="max-width: 200px; border: 6px solid white;">
+                                     alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             @endif
                         </div>
                     </div>
@@ -236,8 +236,10 @@
     .continuous-carousel {
             overflow: hidden;
             width: 100%;
-            height: 400px;
+            height: 280px;
             position: relative;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
     
     .carousel-track {
@@ -261,10 +263,21 @@
     
     .carousel-slide {
         transition: transform 0.3s ease;
+        padding: 30px 40px;
+        color: white;
+        position: relative;
     }
     
     .carousel-slide:hover {
         transform: scale(1.02);
+    }
+    
+    .slide-image {
+        max-width: 150px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
     }
     
     #productCarousel .carousel-item {

@@ -29,10 +29,10 @@
 <?php if($carouselSlides->count() > 0): ?>
 <section class="py-0 bg-light">
     <div class="container-fluid px-0">
-        <div id="productCarousel" class="continuous-carousel overflow-hidden" style="height: 400px; position: relative;">
+        <div id="productCarousel" class="continuous-carousel overflow-hidden" style="height: 280px; position: relative;">
             <div class="carousel-track" style="display: flex; width: <?php echo e(($carouselSlides->count() * 2) * 100); ?>%; animation: scroll <?php echo e($carouselSlides->count() * 10); ?>s linear infinite;">
                 <?php $__currentLoopData = $carouselSlides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="carousel-slide" style="min-width: <?php echo e(100 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 400px; display: flex; align-items: center; padding: 0 2rem;">
+                <div class="carousel-slide" style="min-width: <?php echo e(100 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
                     <div class="row align-items-center w-100">
                         <div class="col-md-6 text-white">
                             <h3 class="display-6 fw-bold mb-3"><?php echo e($slide->title); ?></h3>
@@ -55,7 +55,7 @@
                         <div class="col-md-6 text-center">
                             <?php if($slide->image_url): ?>
                                 <img src="<?php echo e($slide->image_url); ?>" 
-                                     alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg" style="max-width: 200px; border: 6px solid white;">
+                                     alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             <?php endif; ?>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                 
                 <!-- Duplicar slides para efecto continuo -->
                 <?php $__currentLoopData = $carouselSlides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="carousel-slide" style="min-width: <?php echo e(100 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 400px; display: flex; align-items: center; padding: 0 2rem;">
+                <div class="carousel-slide" style="min-width: <?php echo e(100 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
                     <div class="row align-items-center w-100">
                         <div class="col-md-6 text-white">
                             <h3 class="display-6 fw-bold mb-3"><?php echo e($slide->title); ?></h3>
@@ -87,7 +87,7 @@
                         <div class="col-md-6 text-center">
                             <?php if($slide->image_url): ?>
                                 <img src="<?php echo e($slide->image_url); ?>" 
-                                     alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg" style="max-width: 200px; border: 6px solid white;">
+                                     alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             <?php endif; ?>
                         </div>
                     </div>
@@ -236,8 +236,10 @@
     .continuous-carousel {
             overflow: hidden;
             width: 100%;
-            height: 400px;
+            height: 280px;
             position: relative;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
     
     .carousel-track {
@@ -261,10 +263,21 @@
     
     .carousel-slide {
         transition: transform 0.3s ease;
+        padding: 30px 40px;
+        color: white;
+        position: relative;
     }
     
     .carousel-slide:hover {
         transform: scale(1.02);
+    }
+    
+    .slide-image {
+        max-width: 150px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
     }
     
     #productCarousel .carousel-item {

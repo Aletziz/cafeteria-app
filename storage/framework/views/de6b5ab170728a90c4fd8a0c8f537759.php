@@ -32,7 +32,7 @@
         <div id="productCarousel" class="continuous-carousel overflow-hidden" style="height: 280px; position: relative;">
             <div class="carousel-track" style="display: flex; width: <?php echo e(($carouselSlides->count() * 2) * 100); ?>%; animation: scroll <?php echo e($carouselSlides->count() * 10); ?>s linear infinite;">
                 <?php $__currentLoopData = $carouselSlides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="carousel-slide" style="min-width: <?php echo e(100 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
+                <div class="carousel-slide" style="min-width: <?php echo e(60 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 1rem;">
                     <div class="row align-items-center w-100">
                         <div class="col-md-6 text-white">
                             <h3 class="display-6 fw-bold mb-3"><?php echo e($slide->title); ?></h3>
@@ -64,7 +64,7 @@
                 
                 <!-- Duplicar slides para efecto continuo -->
                 <?php $__currentLoopData = $carouselSlides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="carousel-slide" style="min-width: <?php echo e(100 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
+                <div class="carousel-slide" style="min-width: <?php echo e(60 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 1rem;">
                     <div class="row align-items-center w-100">
                         <div class="col-md-6 text-white">
                             <h3 class="display-6 fw-bold mb-3"><?php echo e($slide->title); ?></h3>

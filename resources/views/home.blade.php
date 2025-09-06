@@ -34,29 +34,27 @@
         <div id="productCarousel" class="continuous-carousel overflow-hidden" style="height: 280px; position: relative;">
             <div class="carousel-track" style="display: flex; width: {{ ($carouselSlides->count() * 2) * 100 }}%; animation: scroll {{ $carouselSlides->count() * 10 }}s linear infinite;">
                 @foreach($carouselSlides as $slide)
-                <div class="carousel-slide" style="min-width: {{ 100 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
-                    <div class="row align-items-center w-100">
-                        <div class="col-md-6 text-white">
-                            <h3 class="display-6 fw-bold mb-3">{{ $slide->title }}</h3>
-                            <p class="lead mb-4">{{ $slide->description }}</p>
-                            <div class="d-flex align-items-center mb-3">
+                <div class="carousel-slide" style="min-width: {{ 60 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 280px; display: flex; align-items: center; padding: 0 1rem;">
+                    <div class="d-flex flex-column align-items-center text-center w-100 h-100 justify-content-center">
+                        @if($slide->image_url)
+                            <img src="{{ $slide->image_url }}" 
+                                 alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg mb-3" style="max-width: 80px; border: 3px solid white;">
+                        @endif
+                        <div class="text-white">
+                            <h4 class="fw-bold mb-2" style="font-size: 1.1rem;">{{ $slide->title }}</h4>
+                            <p class="mb-2" style="font-size: 0.85rem; line-height: 1.3;">{{ Str::limit($slide->description, 60) }}</p>
+                            <div class="d-flex align-items-center justify-content-center mb-2">
                                 @if($slide->price)
-                                    <span class="h4 text-warning me-3">${{ $slide->price }}</span>
+                                    <span class="h6 text-warning me-2" style="font-size: 0.9rem;">${{ $slide->price }}</span>
                                 @endif
                                 @if($slide->badge_text)
-                                    <span class="badge fs-6" style="background-color: {{ $slide->badge_color ?? '#28a745' }}">{{ $slide->badge_text }}</span>
+                                    <span class="badge" style="background-color: {{ $slide->badge_color ?? '#28a745' }}; font-size: 0.7rem;">{{ $slide->badge_text }}</span>
                                 @endif
                             </div>
                             @if($slide->button_text && $slide->button_url)
-                                <a href="{{ $slide->button_url }}" class="btn btn-light btn-lg">
-                                    <i class="fas fa-shopping-cart me-2"></i>{{ $slide->button_text }}
+                                <a href="{{ $slide->button_url }}" class="btn btn-light btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                                    <i class="fas fa-shopping-cart me-1"></i>{{ Str::limit($slide->button_text, 15) }}
                                 </a>
-                            @endif
-                        </div>
-                        <div class="col-md-6 text-center">
-                            @if($slide->image_url)
-                                <img src="{{ $slide->image_url }}" 
-                                     alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             @endif
                         </div>
                     </div>
@@ -65,29 +63,27 @@
                 
                 <!-- Duplicar slides para efecto continuo -->
                 @foreach($carouselSlides as $slide)
-                <div class="carousel-slide" style="min-width: {{ 100 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 280px; display: flex; align-items: center; padding: 0 2rem;">
-                    <div class="row align-items-center w-100">
-                        <div class="col-md-6 text-white">
-                            <h3 class="display-6 fw-bold mb-3">{{ $slide->title }}</h3>
-                            <p class="lead mb-4">{{ $slide->description }}</p>
-                            <div class="d-flex align-items-center mb-3">
+                <div class="carousel-slide" style="min-width: {{ 60 / ($carouselSlides->count() * 2) }}%; flex-shrink: 0; background: {{ $slide->background_gradient }}; height: 280px; display: flex; align-items: center; padding: 0 1rem;">
+                    <div class="d-flex flex-column align-items-center text-center w-100 h-100 justify-content-center">
+                        @if($slide->image_url)
+                            <img src="{{ $slide->image_url }}" 
+                                 alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg mb-3" style="max-width: 80px; border: 3px solid white;">
+                        @endif
+                        <div class="text-white">
+                            <h4 class="fw-bold mb-2" style="font-size: 1.1rem;">{{ $slide->title }}</h4>
+                            <p class="mb-2" style="font-size: 0.85rem; line-height: 1.3;">{{ Str::limit($slide->description, 60) }}</p>
+                            <div class="d-flex align-items-center justify-content-center mb-2">
                                 @if($slide->price)
-                                    <span class="h4 text-warning me-3">${{ $slide->price }}</span>
+                                    <span class="h6 text-warning me-2" style="font-size: 0.9rem;">${{ $slide->price }}</span>
                                 @endif
                                 @if($slide->badge_text)
-                                    <span class="badge fs-6" style="background-color: {{ $slide->badge_color ?? '#28a745' }}">{{ $slide->badge_text }}</span>
+                                    <span class="badge" style="background-color: {{ $slide->badge_color ?? '#28a745' }}; font-size: 0.7rem;">{{ $slide->badge_text }}</span>
                                 @endif
                             </div>
                             @if($slide->button_text && $slide->button_url)
-                                <a href="{{ $slide->button_url }}" class="btn btn-light btn-lg">
-                                    <i class="fas fa-shopping-cart me-2"></i>{{ $slide->button_text }}
+                                <a href="{{ $slide->button_url }}" class="btn btn-light btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                                    <i class="fas fa-shopping-cart me-1"></i>{{ Str::limit($slide->button_text, 15) }}
                                 </a>
-                            @endif
-                        </div>
-                        <div class="col-md-6 text-center">
-                            @if($slide->image_url)
-                                <img src="{{ $slide->image_url }}" 
-                                     alt="{{ $slide->title }}" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             @endif
                         </div>
                     </div>

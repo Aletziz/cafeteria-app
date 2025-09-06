@@ -33,29 +33,27 @@
             <div class="carousel-track" style="display: flex; width: <?php echo e(($carouselSlides->count() * 2) * 100); ?>%; animation: scroll <?php echo e($carouselSlides->count() * 10); ?>s linear infinite;">
                 <?php $__currentLoopData = $carouselSlides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="carousel-slide" style="min-width: <?php echo e(60 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 1rem;">
-                    <div class="row align-items-center w-100">
-                        <div class="col-md-6 text-white">
-                            <h3 class="display-6 fw-bold mb-3"><?php echo e($slide->title); ?></h3>
-                            <p class="lead mb-4"><?php echo e($slide->description); ?></p>
-                            <div class="d-flex align-items-center mb-3">
+                    <div class="d-flex flex-column align-items-center text-center w-100 h-100 justify-content-center">
+                        <?php if($slide->image_url): ?>
+                            <img src="<?php echo e($slide->image_url); ?>" 
+                                 alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg mb-3" style="max-width: 80px; border: 3px solid white;">
+                        <?php endif; ?>
+                        <div class="text-white">
+                            <h4 class="fw-bold mb-2" style="font-size: 1.1rem;"><?php echo e($slide->title); ?></h4>
+                            <p class="mb-2" style="font-size: 0.85rem; line-height: 1.3;"><?php echo e(Str::limit($slide->description, 60)); ?></p>
+                            <div class="d-flex align-items-center justify-content-center mb-2">
                                 <?php if($slide->price): ?>
-                                    <span class="h4 text-warning me-3">$<?php echo e($slide->price); ?></span>
+                                    <span class="h6 text-warning me-2" style="font-size: 0.9rem;">$<?php echo e($slide->price); ?></span>
                                 <?php endif; ?>
                                 <?php if($slide->badge_text): ?>
-                                    <span class="badge fs-6" style="background-color: <?php echo e($slide->badge_color ?? '#28a745'); ?>"><?php echo e($slide->badge_text); ?></span>
+                                    <span class="badge" style="background-color: <?php echo e($slide->badge_color ?? '#28a745'); ?>; font-size: 0.7rem;"><?php echo e($slide->badge_text); ?></span>
                                 <?php endif; ?>
                             </div>
                             <?php if($slide->button_text && $slide->button_url): ?>
-                                <a href="<?php echo e($slide->button_url); ?>" class="btn btn-light btn-lg">
-                                    <i class="fas fa-shopping-cart me-2"></i><?php echo e($slide->button_text); ?>
+                                <a href="<?php echo e($slide->button_url); ?>" class="btn btn-light btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                                    <i class="fas fa-shopping-cart me-1"></i><?php echo e(Str::limit($slide->button_text, 15)); ?>
 
                                 </a>
-                            <?php endif; ?>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <?php if($slide->image_url): ?>
-                                <img src="<?php echo e($slide->image_url); ?>" 
-                                     alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             <?php endif; ?>
                         </div>
                     </div>
@@ -65,29 +63,27 @@
                 <!-- Duplicar slides para efecto continuo -->
                 <?php $__currentLoopData = $carouselSlides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="carousel-slide" style="min-width: <?php echo e(60 / ($carouselSlides->count() * 2)); ?>%; flex-shrink: 0; background: <?php echo e($slide->background_gradient); ?>; height: 280px; display: flex; align-items: center; padding: 0 1rem;">
-                    <div class="row align-items-center w-100">
-                        <div class="col-md-6 text-white">
-                            <h3 class="display-6 fw-bold mb-3"><?php echo e($slide->title); ?></h3>
-                            <p class="lead mb-4"><?php echo e($slide->description); ?></p>
-                            <div class="d-flex align-items-center mb-3">
+                    <div class="d-flex flex-column align-items-center text-center w-100 h-100 justify-content-center">
+                        <?php if($slide->image_url): ?>
+                            <img src="<?php echo e($slide->image_url); ?>" 
+                                 alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg mb-3" style="max-width: 80px; border: 3px solid white;">
+                        <?php endif; ?>
+                        <div class="text-white">
+                            <h4 class="fw-bold mb-2" style="font-size: 1.1rem;"><?php echo e($slide->title); ?></h4>
+                            <p class="mb-2" style="font-size: 0.85rem; line-height: 1.3;"><?php echo e(Str::limit($slide->description, 60)); ?></p>
+                            <div class="d-flex align-items-center justify-content-center mb-2">
                                 <?php if($slide->price): ?>
-                                    <span class="h4 text-warning me-3">$<?php echo e($slide->price); ?></span>
+                                    <span class="h6 text-warning me-2" style="font-size: 0.9rem;">$<?php echo e($slide->price); ?></span>
                                 <?php endif; ?>
                                 <?php if($slide->badge_text): ?>
-                                    <span class="badge fs-6" style="background-color: <?php echo e($slide->badge_color ?? '#28a745'); ?>"><?php echo e($slide->badge_text); ?></span>
+                                    <span class="badge" style="background-color: <?php echo e($slide->badge_color ?? '#28a745'); ?>; font-size: 0.7rem;"><?php echo e($slide->badge_text); ?></span>
                                 <?php endif; ?>
                             </div>
                             <?php if($slide->button_text && $slide->button_url): ?>
-                                <a href="<?php echo e($slide->button_url); ?>" class="btn btn-light btn-lg">
-                                    <i class="fas fa-shopping-cart me-2"></i><?php echo e($slide->button_text); ?>
+                                <a href="<?php echo e($slide->button_url); ?>" class="btn btn-light btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                                    <i class="fas fa-shopping-cart me-1"></i><?php echo e(Str::limit($slide->button_text, 15)); ?>
 
                                 </a>
-                            <?php endif; ?>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <?php if($slide->image_url): ?>
-                                <img src="<?php echo e($slide->image_url); ?>" 
-                                     alt="<?php echo e($slide->title); ?>" class="img-fluid rounded-circle shadow-lg" style="max-width: 150px; border: 6px solid white;">
                             <?php endif; ?>
                         </div>
                     </div>
